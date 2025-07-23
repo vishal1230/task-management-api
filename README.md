@@ -26,7 +26,6 @@ A simple and robust REST API for managing tasks in a to-do application, built wi
 "updatedAt": "2024-01-15T10:30:00.000Z"
 }
 
-text
 
 ### Task Status Options
 - `PENDING` - Task is not yet started
@@ -72,7 +71,6 @@ task-management-api/
 ├── .gitignore
 └── README.md
 
-text
 
 ## 🚀 Setup Instructions
 
@@ -87,18 +85,15 @@ text
 mkdir task-management-api
 cd task-management-api
 
-text
 
 2. **Initialize the project and install dependencies:**
 npm init -y
 npm install express joi uuid cors helmet morgan swagger-jsdoc swagger-ui-express dotenv
 
-text
 
 3. **Install development dependencies:**
 npm install -D eslint prettier nodemon
 
-text
 
 4. **Create the project structure and add all the source files** as provided in the implementation.
 
@@ -108,19 +103,16 @@ echo "PORT=3000
 NODE_ENV=development
 API_VERSION=v1" > .env
 
-text
 
 ### Running the Application
 
 #### Development Mode (with hot reload)
 npm run dev
 
-text
 
 #### Production Mode
 npm start
 
-text
 
 #### Code Quality
 Run ESLint
@@ -132,7 +124,6 @@ npm run lint:fix
 Format code with Prettier
 npm run format
 
-text
 
 ### Verification
 
@@ -143,11 +134,6 @@ Once the server is running, you can verify the installation:
 3. **API Base URL**: http://localhost:3000/api/v1/tasks
 
 ## 📚 API Documentation
-
-### Base URL
-http://localhost:3000/api/v1
-
-text
 
 ### Endpoints Overview
 
@@ -175,7 +161,6 @@ Creates a new task in the system.
 "status": "PENDING"
 }
 
-text
 
 #### Request Fields
 - `title` (string, required): Task title (1-100 characters)
@@ -191,7 +176,6 @@ curl -X POST http://localhost:3000/api/v1/tasks
 "status": "PENDING"
 }'
 
-text
 
 #### Success Response (201 Created)
 {
@@ -207,7 +191,6 @@ text
 }
 }
 
-text
 
 #### Error Response (400 Bad Request)
 {
@@ -215,8 +198,6 @@ text
 "message": "Validation error",
 "error": "Title is required"
 }
-
-text
 
 ---
 
@@ -248,7 +229,6 @@ curl "http://localhost:3000/api/v1/tasks?title=documentation"
 Combine filters
 curl "http://localhost:3000/api/v1/tasks?page=1&limit=10&status=IN_PROGRESS&title=project"
 
-text
 
 #### Success Response (200 OK)
 {
@@ -284,8 +264,6 @@ text
 }
 }
 
-text
-
 ---
 
 ### 3. Get Task by ID
@@ -300,7 +278,6 @@ Retrieves a specific task by its unique ID.
 #### Example Request
 curl "http://localhost:3000/api/v1/tasks/550e8400-e29b-41d4-a716-446655440000"
 
-text
 
 #### Success Response (200 OK)
 {
@@ -316,7 +293,6 @@ text
 }
 }
 
-text
 
 #### Error Response (404 Not Found)
 {
@@ -324,7 +300,6 @@ text
 "message": "Task not found"
 }
 
-text
 
 #### Error Response (400 Bad Request - Invalid UUID)
 {
@@ -333,7 +308,6 @@ text
 "error": "Task ID must be a valid UUID"
 }
 
-text
 
 ---
 
@@ -353,7 +327,6 @@ Updates an existing task by its ID. You can update any combination of title, des
 "status": "IN_PROGRESS"
 }
 
-text
 
 #### Request Fields (all optional, but at least one required)
 - `title` (string, optional): New task title (1-100 characters)
@@ -377,7 +350,6 @@ curl -X PUT http://localhost:3000/api/v1/tasks/550e8400-e29b-41d4-a716-446655440
 "status": "COMPLETED"
 }'
 
-text
 
 #### Success Response (200 OK)
 {
@@ -393,7 +365,6 @@ text
 }
 }
 
-text
 
 #### Error Response (404 Not Found)
 {
@@ -401,7 +372,6 @@ text
 "message": "Task not found"
 }
 
-text
 
 ---
 
@@ -417,7 +387,6 @@ Deletes a task by its ID.
 #### Example Request
 curl -X DELETE "http://localhost:3000/api/v1/tasks/550e8400-e29b-41d4-a716-446655440000"
 
-text
 
 #### Success Response (200 OK)
 {
@@ -425,7 +394,6 @@ text
 "message": "Task deleted successfully"
 }
 
-text
 
 #### Error Response (404 Not Found)
 {
@@ -433,7 +401,6 @@ text
 "message": "Task not found"
 }
 
-text
 
 ---
 
@@ -445,8 +412,6 @@ Retrieves statistics about all tasks in the system.
 
 #### Example Request
 curl "http://localhost:3000/api/v1/tasks/stats"
-
-text
 
 #### Success Response (200 OK)
 {
@@ -460,7 +425,6 @@ text
 }
 }
 
-text
 
 ---
 
@@ -475,7 +439,6 @@ Check if the server is running properly.
 #### Example Request
 curl "http://localhost:3000/health"
 
-text
 
 #### Success Response (200 OK)
 {
@@ -484,8 +447,6 @@ text
 "timestamp": "2024-01-15T12:00:00.000Z",
 "uptime": 3600.123
 }
-
-text
 
 ---
 
@@ -530,8 +491,6 @@ curl -X PUT http://localhost:3000/api/v1/tasks/abc123...
 -H "Content-Type: application/json"
 -d '{"status": "COMPLETED"}'
 
-text
-
 ### Scenario 2: Filtering and Searching Tasks
 
 Get all pending tasks
@@ -543,7 +502,6 @@ curl "http://localhost:3000/api/v1/tasks?title=documentation"
 Get first 5 in-progress tasks
 curl "http://localhost:3000/api/v1/tasks?status=IN_PROGRESS&limit=5&page=1"
 
-text
 
 ### Scenario 3: Getting Overview of Work
 
@@ -553,7 +511,6 @@ curl "http://localhost:3000/api/v1/tasks/stats"
 Get recent tasks (first page)
 curl "http://localhost:3000/api/v1/tasks?page=1&limit=10"
 
-text
 
 ---
 
@@ -577,8 +534,6 @@ The API uses standardized error responses with appropriate HTTP status codes:
 "error": "Detailed error message"
 }
 
-text
-
 ### Common Validation Errors
 
 {
@@ -587,7 +542,6 @@ text
 "error": "Title is required"
 }
 
-text
 undefined
 {
 "success": false,
@@ -595,7 +549,6 @@ undefined
 "error": "Title must not exceed 100 characters"
 }
 
-text
 
 ---
 
@@ -621,20 +574,15 @@ The API includes several security measures:
 Change port in .env file
 PORT=3001
 
-text
-
 2. **ESLint errors**
 Fix automatically
 npm run lint:fix
-
-text
 
 3. **Module not found errors**
 Reinstall dependencies
 rm -rf node_modules package-lock.json
 npm install
 
-text
 
 ### Getting Help
 
