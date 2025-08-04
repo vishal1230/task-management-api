@@ -44,7 +44,7 @@ A simple and robust REST API for managing tasks in a to-do application, built wi
 - **Code Quality**: ESLint, Prettier
 
 ## 📁 Project Structure
-
+```
 task-management-api/
 ├── src/
 │ ├── controllers/ # Request handlers
@@ -70,7 +70,7 @@ task-management-api/
 ├── .env
 ├── .gitignore
 └── README.md
-
+```
 
 ## 🚀 Setup Instructions
 
